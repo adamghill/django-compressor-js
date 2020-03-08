@@ -24,4 +24,6 @@ Most ES6 syntax seems to work pretty well, but requiring modules doesn't import 
 `poetry run pytest`
 
 # Credits
-`dukpy` and `django-compressor` for doing all the hard things.
+- [duktape](https://github.com/svaarala/duktape/)
+- [dukpy](https://github.com/amol-/dukpy)
+- [django-compressor](https://pypi.org/project/django-compressor/)
