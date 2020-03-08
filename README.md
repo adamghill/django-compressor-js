@@ -4,13 +4,13 @@ Instead of running an extra node.js process watching for changes in your Javascr
 
 # Install
 1. `pip install django-compressor-js`
-1. Add precompiler (`text/es6` can be anything, but it has to match the script type in the template)
+2. Add precompiler (`text/es6` can be anything, but it has to match the script type in the template)
 ```
 COMPRESS_PRECOMPILERS = (
     ("text/es6", "django_compressor_js.precompilers.BabelCompiler"),
 )
 ```
-1. Add to HTML template
+3. Add to HTML template
 ```
 {% compress js %}
 	<script src="{% static 'js/test-es6-code.js' %}" type="text/es6"></script>
