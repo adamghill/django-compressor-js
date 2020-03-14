@@ -17,6 +17,18 @@ COMPRESS_PRECOMPILERS = (
 {% endcompress %}
 ```
 
+# Cache compiled files
+To prevent the compressor from precomiling your JavaScript on every request, you can use the [COMPRESS_CACHEABLE_PRECOMPILERS](https://django-compressor.readthedocs.io/en/stable/settings/#django.conf.settings.COMPRESS_CACHEABLE_PRECOMPILERS) settings in development:
+```python
+CACHES["compressor"] = {
+    "BACKEND": "django.core.cache.backends.locmem.LocMemCache",
+    "LOCATION": "unique-snowflake",
+}
+COMPRESS_CACHEABLE_PRECOMPILERS = ("text/es6",)
+COMPRESS_CACHE_BACKEND = "compressor"
+```
+If you change the content of the file it will get re-compiled, but otherwise it will skip it.
+
 # Caveats
 Most ES6 syntax seems to work pretty well, but requiring modules doesn't import correctly. Also, this approach adds some latency when compressing on the fly (i.e. `COMPRESS_OFFLINE = False`).
 
